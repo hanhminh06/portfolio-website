@@ -1,1024 +1,1030 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hanh Minh Tran - Portfolio</title>
     <style>
-        /* CSS Reset and Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+      /* CSS Reset and Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary-color: #73a1b2;
+        --dark-bg: #290907;
+        --light-bg: #d9d9d9;
+        --lighter-bg: #f3f3f3;
+        --text-dark: #000000;
+        --text-light: #ffffff;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+      }
+
+      body {
+        font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--text-dark);
+        background-color: #ffffff;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* Typography */
+      h1 {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+
+      h2 {
+        font-size: 1.75rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+      }
+
+      p {
+        font-size: 1rem;
+        font-weight: 400;
+        margin-bottom: 1rem;
+      }
+
+      /* Link States */
+      a:link {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      a:visited {
+        color: inherit;
+      }
+
+      a:hover {
+        opacity: 0.8;
+        text-decoration: underline;
+      }
+
+      a:active {
+        opacity: 0.6;
+      }
+
+      /* Navigation */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        padding: 1rem 2rem;
+      }
+
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .nav-logo {
+        font-weight: bold;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: opacity 0.3s;
+      }
+
+      .nav-logo:hover {
+        opacity: 0.7;
+      }
+
+      .nav-menu {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-menu a {
+        cursor: pointer;
+        transition: color 0.3s;
+      }
+
+      .nav-menu a:hover {
+        color: var(--primary-color);
+        text-decoration: none;
+      }
+
+      /* Hero Section */
+      #hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 8rem 2rem 4rem;
+        text-align: center;
+      }
+
+      .profile-image {
+        width: 240px;
+        height: 240px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-bottom: 2rem;
+        background-color: var(--light-bg);
+      }
+
+      .profile-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .hero-content {
+        max-width: 1066px;
+        margin: 0 auto;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        margin: 2rem 0;
+      }
+
+      .social-links a {
+        transition: transform 0.3s;
+      }
+
+      .social-links a:hover {
+        transform: scale(1.1);
+        text-decoration: none;
+      }
+
+      .icon {
+        width: 48px;
+        height: 48px;
+        display: inline-block;
+      }
+
+      /* Navigation Buttons */
+      .nav-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+        margin: 3rem 0;
+      }
+
+      .nav-button {
+        background-color: var(--light-bg);
+        padding: 0.75rem 2rem;
+        border-radius: 20px;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 500;
+        transition: background-color 0.3s;
+      }
+
+      .nav-button:first-child {
+        background-color: #d2d2d2;
+      }
+
+      .nav-button:hover {
+        background-color: #c0c0c0;
+      }
+
+      /* Scroll Indicator */
+      .scroll-indicator {
+        animation: bounce 2s infinite;
+        cursor: pointer;
+        opacity: 0.5;
+        background: transparent;
+        border: none;
+        padding: 0;
+        transition: opacity 0.3s;
+      }
+
+      .scroll-indicator:hover {
+        opacity: 0.7;
+      }
+
+      .scroll-up {
+        position: absolute;
+        bottom: 2rem;
+        right: 3rem;
+        transform: rotate(180deg);
+      }
+
+      @keyframes bounce {
+
+        0%,
+        100% {
+          transform: translateY(0);
         }
 
-        :root {
-            --primary-color: #73a1b2;
-            --dark-bg: #290907;
-            --light-bg: #d9d9d9;
-            --lighter-bg: #f3f3f3;
-            --text-dark: #000000;
-            --text-light: #ffffff;
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      /* Sections */
+      section {
+        position: relative;
+        padding: 6rem 2rem;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* About Me Section */
+      .about-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 3rem;
+        align-items: center;
+      }
+
+      .about-image {
+        border-radius: 40px;
+        overflow: hidden;
+      }
+
+      .about-image img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+
+      /* Projects Section */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .project-card {
+        background-color: rgba(234, 234, 234, 0.1);
+        border-radius: 40px;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+        transition: box-shadow 0.3s;
+      }
+
+      .project-card:hover {
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.3);
+      }
+
+      .project-image {
+        aspect-ratio: 4/3;
+        overflow: hidden;
+      }
+
+      .project-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s;
+      }
+
+      .project-card:hover .project-image img {
+        transform: scale(1.05);
+      }
+
+      .project-content {
+        padding: 1.5rem;
+      }
+
+      .project-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
+
+      .tag {
+        padding: 0.5rem 1rem;
+        border-radius: 30px;
+        font-size: 0.9rem;
+      }
+
+      .tag-lacquer {
+        background-color: #efe9e1;
+        color: var(--text-dark);
+      }
+
+      .tag-mentor {
+        background-color: #d0d5ce;
+        color: var(--text-dark);
+      }
+
+      .tag-charity {
+        background-color: #6e8658;
+        color: var(--text-light);
+      }
+
+      .tag-community {
+        background-color: #d0d5ce;
+        color: var(--text-dark);
+      }
+
+      .tag-speaking {
+        background-color: var(--dark-bg);
+        color: var(--text-light);
+      }
+
+      .tag-managing {
+        background-color: var(--dark-bg);
+        color: var(--text-light);
+      }
+
+      .tag-designing {
+        background-color: #57473A;
+        color: var(--text-light);
+      }
+
+      /* Skills Section */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-bottom: 4rem;
+      }
+
+      .skill-card {
+        background-color: var(--light-bg);
+        border-radius: 30px;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        aspect-ratio: 4/3;
+        overflow: hidden;
+        transition: box-shadow 0.3s;
+      }
+
+      .skill-card:hover {
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.3);
+      }
+
+      .skill-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Table Styles */
+      .table-container {
+        max-width: 800px;
+        margin: 0 auto 2rem;
+        overflow-x: auto;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+      }
+
+      th,
+      td {
+        padding: 0.75rem 1.5rem;
+        text-align: left;
+        border: 1px solid #999;
+      }
+
+      th {
+        background-color: var(--light-bg);
+        font-weight: 600;
+      }
+
+      tbody tr:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+        transition: background-color 0.2s;
+      }
+
+      /* Contact Section */
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 3rem;
+      }
+
+      .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: start;
+        gap: 1rem;
+      }
+
+      .contact-icon {
+        width: 48px;
+        height: 48px;
+        flex-shrink: 0;
+      }
+
+      .contact-form {
+        background-color: var(--lighter-bg);
+        border-radius: 30px;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        padding: 3rem;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        background-color: var(--light-bg);
+        border-radius: 10px;
+        padding: 0.75rem 1rem;
+        border: none;
+        outline: none;
+        font-size: 1rem;
+        font-family: inherit;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        box-shadow: 0 0 0 2px var(--primary-color);
+      }
+
+      .form-group textarea {
+        resize: none;
+        min-height: 150px;
+      }
+
+      .submit-button {
+        width: 100%;
+        background-color: #424040;
+        color: var(--text-light);
+        border-radius: 40px;
+        padding: 1rem;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 600;
+        transition: background-color 0.3s;
+      }
+
+      .submit-button:hover {
+        background-color: #2a2828;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #c7c7c7;
+        padding: 4rem 2rem;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 3rem;
+        margin-bottom: 3rem;
+      }
+
+      .footer-links {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .footer-links button {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        text-align: left;
+        padding: 0;
+        transition: color 0.3s;
+      }
+
+      .footer-links button:hover {
+        color: var(--primary-color);
+      }
+
+      .footer-social {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .footer-social a {
+        transition: transform 0.3s;
+      }
+
+      .footer-social a:hover {
+        transform: scale(1.1);
+        text-decoration: none;
+      }
+
+      .footer-copyright {
+        text-align: center;
+        padding-top: 2rem;
+        border-top: 1px solid #999;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .nav-menu {
+          gap: 1rem;
+          font-size: 0.9rem;
         }
 
-        html {
-            scroll-behavior: smooth;
-            font-size: 16px;
-        }
-
-        body {
-            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            background-color: #ffffff;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        /* Typography */
         h1 {
-            font-size: 2rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
+          font-size: 1.5rem;
         }
 
         h2 {
-            font-size: 1.75rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
+          font-size: 1.35rem;
         }
 
         h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-        }
-
-        p {
-            font-size: 1rem;
-            font-weight: 400;
-            margin-bottom: 1rem;
-        }
-
-        /* Link States */
-        a:link {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        a:visited {
-            color: inherit;
-        }
-
-        a:hover {
-            opacity: 0.8;
-            text-decoration: underline;
-        }
-
-        a:active {
-            opacity: 0.6;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            padding: 1rem 2rem;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-logo {
-            font-weight: bold;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: opacity 0.3s;
-        }
-
-        .nav-logo:hover {
-            opacity: 0.7;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-menu a {
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .nav-menu a:hover {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        /* Hero Section */
-        #hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 8rem 2rem 4rem;
-            text-align: center;
+          font-size: 1.2rem;
         }
 
         .profile-image {
-            width: 240px;
-            height: 240px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-bottom: 2rem;
-            background-color: var(--light-bg);
+          width: 180px;
+          height: 180px;
         }
 
-        .profile-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .hero-content {
-            max-width: 1066px;
-            margin: 0 auto;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            margin: 2rem 0;
-        }
-
-        .social-links a {
-            transition: transform 0.3s;
-        }
-
-        .social-links a:hover {
-            transform: scale(1.1);
-            text-decoration: none;
-        }
-
-        .icon {
-            width: 48px;
-            height: 48px;
-            display: inline-block;
-        }
-
-        /* Navigation Buttons */
-        .nav-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-            margin: 3rem 0;
-        }
-
-        .nav-button {
-            background-color: var(--light-bg);
-            padding: 0.75rem 2rem;
-            border-radius: 20px;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 500;
-            transition: background-color 0.3s;
-        }
-
-        .nav-button:first-child {
-            background-color: #d2d2d2;
-        }
-
-        .nav-button:hover {
-            background-color: #c0c0c0;
-        }
-
-        /* Scroll Indicator */
-        .scroll-indicator {
-            animation: bounce 2s infinite;
-            cursor: pointer;
-            opacity: 0.5;
-            background: transparent;
-            border: none;
-            padding: 0;
-            transition: opacity 0.3s;
-        }
-
-        .scroll-indicator:hover {
-            opacity: 0.7;
+        section {
+          padding: 4rem 1rem;
         }
 
         .scroll-up {
-            position: absolute;
-            bottom: 2rem;
-            right: 3rem;
-            transform: rotate(180deg);
-        }
-
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        /* Sections */
-        section {
-            position: relative;
-            padding: 6rem 2rem;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* About Me Section */
-        .about-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-image {
-            border-radius: 40px;
-            overflow: hidden;
-        }
-
-        .about-image img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-        }
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background-color: rgba(234, 234, 234, 0.1);
-            border-radius: 40px;
-            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-            overflow: hidden;
-            transition: box-shadow 0.3s;
-        }
-
-        .project-card:hover {
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.3);
-        }
-
-        .project-image {
-            aspect-ratio: 4/3;
-            overflow: hidden;
-        }
-
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s;
-        }
-
-        .project-card:hover .project-image img {
-            transform: scale(1.05);
-        }
-
-        .project-content {
-            padding: 1.5rem;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .tag {
-            padding: 0.5rem 1rem;
-            border-radius: 30px;
-            font-size: 0.9rem;
-        }
-
-        .tag-lacquer {
-            background-color: #efe9e1;
-            color: var(--text-dark);
-        }
-
-        .tag-mentor {
-            background-color: #d0d5ce;
-            color: var(--text-dark);
-        }
-
-        .tag-charity {
-            background-color: #6e8658;
-            color: var(--text-light);
-        }
-
-        .tag-community {
-            background-color: #d0d5ce;
-            color: var(--text-dark);
-        }
-
-        .tag-speaking {
-            background-color: var(--dark-bg);
-            color: var(--text-light);
-        }
-
-        .tag-managing {
-            background-color: var(--dark-bg);
-            color: var(--text-light);
-        }
-
-        .tag-designing {
-            background-color: #57473A;
-            color: var(--text-light);
-        }
-
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .skill-card {
-            background-color: var(--light-bg);
-            border-radius: 30px;
-            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-            aspect-ratio: 4/3;
-            overflow: hidden;
-            transition: box-shadow 0.3s;
-        }
-
-        .skill-card:hover {
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.3);
-        }
-
-        .skill-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Table Styles */
-        .table-container {
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            overflow-x: auto;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1rem 0;
-        }
-
-        th, td {
-            padding: 0.75rem 1.5rem;
-            text-align: left;
-            border: 1px solid #999;
-        }
-
-        th {
-            background-color: var(--light-bg);
-            font-weight: 600;
-        }
-
-        tbody tr:hover {
-            background-color: rgba(0, 0, 0, 0.05);
-            transition: background-color 0.2s;
-        }
-
-        /* Contact Section */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: start;
-            gap: 1rem;
-        }
-
-        .contact-icon {
-            width: 48px;
-            height: 48px;
-            flex-shrink: 0;
+          right: 1rem;
         }
 
         .contact-form {
-            background-color: var(--lighter-bg);
-            border-radius: 30px;
-            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-            padding: 3rem;
+          padding: 2rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .nav-menu {
+          display: none;
         }
 
-        .form-group {
-            margin-bottom: 1.5rem;
+        .nav-buttons {
+          flex-direction: column;
+          width: 100%;
+          max-width: 300px;
         }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            background-color: var(--light-bg);
-            border-radius: 10px;
-            padding: 0.75rem 1rem;
-            border: none;
-            outline: none;
-            font-size: 1rem;
-            font-family: inherit;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            box-shadow: 0 0 0 2px var(--primary-color);
-        }
-
-        .form-group textarea {
-            resize: none;
-            min-height: 150px;
-        }
-
-        .submit-button {
-            width: 100%;
-            background-color: #424040;
-            color: var(--text-light);
-            border-radius: 40px;
-            padding: 1rem;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: background-color 0.3s;
-        }
-
-        .submit-button:hover {
-            background-color: #2a2828;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #c7c7c7;
-            padding: 4rem 2rem;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-links {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        .footer-links button {
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            text-align: left;
-            padding: 0;
-            transition: color 0.3s;
-        }
-
-        .footer-links button:hover {
-            color: var(--primary-color);
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .footer-social a {
-            transition: transform 0.3s;
-        }
-
-        .footer-social a:hover {
-            transform: scale(1.1);
-            text-decoration: none;
-        }
-
-        .footer-copyright {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid #999;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-menu {
-                gap: 1rem;
-                font-size: 0.9rem;
-            }
-
-            h1 {
-                font-size: 1.5rem;
-            }
-
-            h2 {
-                font-size: 1.35rem;
-            }
-
-            h3 {
-                font-size: 1.2rem;
-            }
-
-            .profile-image {
-                width: 180px;
-                height: 180px;
-            }
-
-            section {
-                padding: 4rem 1rem;
-            }
-
-            .scroll-up {
-                right: 1rem;
-            }
-
-            .contact-form {
-                padding: 2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .nav-menu {
-                display: none;
-            }
-
-            .nav-buttons {
-                flex-direction: column;
-                width: 100%;
-                max-width: 300px;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Navigation -->
     <nav>
-        <div class="nav-container">
-            <a href="#hero" class="nav-logo">
-                <strong>Hanh Minh Tran</strong>
-            </a>
-            <ul class="nav-menu">
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#projects">View My Work</a></li>
-                <li><a href="#skills">My Skills</a></li>
-                <li><a href="#contact">Get In Touch</a></li>
-            </ul>
-        </div>
+      <div class="nav-container">
+        <a href="#hero" class="nav-logo">
+          <strong>Hanh Minh Tran</strong>
+        </a>
+        <ul class="nav-menu">
+          <li><a href="#about">About Me</a></li>
+          <li><a href="#projects">View My Work</a></li>
+          <li><a href="#skills">My Skills</a></li>
+          <li><a href="#contact">Get In Touch</a></li>
+        </ul>
+      </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="hero">
-        <div class="profile-image">
-            <!-- Replace with actual image path -->
-            <img src="profile-photo.jpg" alt="Hanh Minh Tran Profile" width="240" height="240">
-        </div>
+      <div class="profile-image">
+        <!-- Replace with actual image path -->
+        <img src="profile-photo.jpg" alt="Hanh Minh Tran Profile" width="240" height="240">
+      </div>
 
-        <div class="hero-content">
-            <p><strong>Hi, I'm Hanh Minh Tran</strong></p>
-            <h1><em>Artist/Illustrator & UI/UX Designer</em></h1>
-            <p>I create meaningful, handcrafted art experiences rooted in traditional techniques, especially lacquer arts. My work focuses on blending cultural heritage with thoughtful, modern expression, bringing depth and intention to every piece.</p>
-        </div>
+      <div class="hero-content">
+        <p><strong>Hi, I'm Hanh Minh Tran</strong></p>
+        <h1><em>Artist/Illustrator & UI/UX Designer</em></h1>
+        <p>I create meaningful, handcrafted art experiences rooted in traditional techniques, especially lacquer arts. My work focuses on blending cultural heritage with thoughtful, modern expression, bringing depth and intention to every piece.</p>
+      </div>
 
-        <!-- Social Links -->
-        <div class="social-links">
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                </svg>
-            </a>
-            <a href="https://linkedin.com/in/hanh-minh-tran-111675218" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                </svg>
-            </a>
-            <a href="mailto:tranhanhminh123@gmail.com" aria-label="Email">
-                <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/>
-                </svg>
-            </a>
-        </div>
+      <!-- Social Links -->
+      <div class="social-links">
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+          </svg>
+        </a>
+        <a href="https://linkedin.com/in/hanh-minh-tran-111675218" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+          </svg>
+        </a>
+        <a href="mailto:tranhanhminh123@gmail.com" aria-label="Email">
+          <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z" />
+          </svg>
+        </a>
+      </div>
 
-        <!-- Navigation Buttons -->
-        <div class="nav-buttons">
-            <button class="nav-button" onclick="scrollToSection('about')">About Me</button>
-            <button class="nav-button" onclick="scrollToSection('projects')">View My Work</button>
-            <button class="nav-button" onclick="scrollToSection('skills')">My Skills</button>
-            <button class="nav-button" onclick="scrollToSection('contact')">Get In Touch</button>
-        </div>
+      <!-- Navigation Buttons -->
+      <div class="nav-buttons">
+        <button class="nav-button" onclick="scrollToSection('about')">About Me</button>
+        <button class="nav-button" onclick="scrollToSection('projects')">View My Work</button>
+        <button class="nav-button" onclick="scrollToSection('skills')">My Skills</button>
+        <button class="nav-button" onclick="scrollToSection('contact')">Get In Touch</button>
+      </div>
 
-        <!-- Scroll Down Indicator -->
-        <button class="scroll-indicator" onclick="scrollToSection('about')" aria-label="Scroll to About section">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-        </button>
+      <!-- Scroll Down Indicator -->
+      <button class="scroll-indicator" onclick="scrollToSection('about')" aria-label="Scroll to About section">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
     </section>
 
     <!-- About Me Section -->
     <section id="about">
-        <div class="container">
-            <div class="section-header">
-                <h2>About Me</h2>
-            </div>
-
-            <div class="about-grid">
-                <div class="about-image">
-                    <!-- Replace with actual image path -->
-                    <img src="aboutphoto.png" alt="Hanh Minh Tran portrait outdoors" width="502" height="753">
-                </div>
-
-                <div>
-                    <h3>Creative Problem Solver</h3>
-                    <p>Coming from an artistic family, I grew up surrounded by creativity and traditional craftsmanship. What began as simple curiosity, watching my family work with different materials and techniques, naturally grew into a deep appreciation for physical art forms, especially lacquer arts.</p>
-                    <p>Over the years, I've developed a strong passion for lacquer work, drawn to its meticulous process, rich textures, and the way it preserves cultural stories through layers of color and material. There's something uniquely powerful about the patience and precision it requires, and I've always felt connected to the tradition it carries.</p>
-                    <p>My dream is to become an art manager, someone who not only supports artists but also helps bring meaningful artistic experiences to a wider audience. When I'm not working on my own pieces, you can usually find me visiting galleries, studying different art movements, or exploring new ways to elevate and preserve traditional lacquer art practices.</p>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-header">
+          <h2>About Me</h2>
         </div>
 
-        <!-- Scroll Up Indicator -->
-        <button class="scroll-indicator scroll-up" onclick="scrollToSection('projects')" aria-label="Scroll to Projects section">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-        </button>
+        <div class="about-grid">
+          <div class="about-image">
+            <!-- Replace with actual image path -->
+            <img src="aboutphoto.png" alt="Hanh Minh Tran portrait outdoors" width="502" height="753">
+          </div>
+
+          <div>
+            <h3>Creative Problem Solver</h3>
+            <p>Coming from an artistic family, I grew up surrounded by creativity and traditional craftsmanship. What began as simple curiosity, watching my family work with different materials and techniques, naturally grew into a deep appreciation for physical art forms, especially lacquer arts.</p>
+            <p>Over the years, I've developed a strong passion for lacquer work, drawn to its meticulous process, rich textures, and the way it preserves cultural stories through layers of color and material. There's something uniquely powerful about the patience and precision it requires, and I've always felt connected to the tradition it carries.</p>
+            <p>My dream is to become an art manager, someone who not only supports artists but also helps bring meaningful artistic experiences to a wider audience. When I'm not working on my own pieces, you can usually find me visiting galleries, studying different art movements, or exploring new ways to elevate and preserve traditional lacquer art practices.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Up Indicator -->
+      <button class="scroll-indicator scroll-up" onclick="scrollToSection('projects')" aria-label="Scroll to Projects section">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
     </section>
 
     <!-- Featured Projects Section -->
     <section id="projects">
-        <div class="container">
-            <div class="section-header">
-                <h2>Featured Projects</h2>
-                <p>A selection of recent work showcasing my skills and experience</p>
-            </div>
-
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <article class="project-card">
-                    <div class="project-image">
-                        <!-- Replace with actual image path -->
-                        <img src="project1.png" alt="Art Exhibition at Babeeni Art Center" width="358" height="299">
-                    </div>
-                    <div class="project-content">
-                        <a href="https://www.linkedin.com/in/hanh-minh-tran-111675218/" target="_blank" rel="noopener noreferrer">
-                            <h3>Art Exhibition at Babeeni Art Center</h3>
-                        </a>
-                        <p><em>May 2023</em></p>
-                        <p>An Art Center that always wishes to devote all its efforts to promoting artworks and connecting artists with the community of people who love art. Display artwork "The Color of Nature" in the "The Flow of Lacquer Art" exhibition.</p>
-                        <div class="project-tags">
-                            <span class="tag tag-lacquer">Lacquer</span>
-                            <span class="tag tag-mentor">Teacher Mentoring</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Project 2 -->
-                <article class="project-card">
-                    <div class="project-image">
-                        <!-- Replace with actual image path -->
-                        <img src="project2.png" alt="Enfance Partenariat Vietnam" width="358" height="299">
-                    </div>
-                    <div class="project-content">
-                        <h3>Enfance Partenariat Vietnam</h3>
-                        <p><em>24 July 2022</em></p>
-                        <p>A non-profit organization in Versailles, France. I volunteering and supporting in the introduction of Vietnamese Traditional Lacquer Art to Enfance members</p>
-                        <div class="project-tags">
-                            <span class="tag tag-charity">Charity Work</span>
-                            <span class="tag tag-community">Community Service</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Project 3 -->
-                <article class="project-card">
-                    <div class="project-image">
-                        <!-- Replace with actual image path -->
-                        <img src="project3.png" alt="Vietnam National Fine Arts Museum" width="358" height="299">
-                    </div>
-                    <div class="project-content">
-                        <h3>Designer and Emcee at Vietnam National Fine Arts Museum</h3>
-                        <p><em>May 2025</em></p>
-                        <p>Directed, design and emcee for art exhibition "Nhung Nguoi Ban".</p>
-                        <div class="project-tags">
-                            <span class="tag tag-speaking">Public Speaking</span>
-                            <span class="tag tag-managing">Art Managing</span>
-                            <span class="tag tag-designing">Designing</span>
-                        </div>
-                    </div>
-                </article>
-            </div>
+      <div class="container">
+        <div class="section-header">
+          <h2>Featured Projects</h2>
+          <p>A selection of recent work showcasing my skills and experience</p>
         </div>
 
-        <!-- Scroll Up Indicator -->
-        <button class="scroll-indicator scroll-up" onclick="scrollToSection('skills')" aria-label="Scroll to Skills section">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-        </button>
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <article class="project-card">
+            <div class="project-image">
+              <!-- Replace with actual image path -->
+              <img src="project1.png" alt="Art Exhibition at Babeeni Art Center" width="358" height="299">
+            </div>
+            <div class="project-content">
+              <a href="https://www.linkedin.com/in/hanh-minh-tran-111675218/" target="_blank" rel="noopener noreferrer">
+                <h3>Art Exhibition at Babeeni Art Center</h3>
+              </a>
+              <p><em>May 2023</em></p>
+              <p>An Art Center that always wishes to devote all its efforts to promoting artworks and connecting artists with the community of people who love art. Display artwork "The Color of Nature" in the "The Flow of Lacquer Art" exhibition.</p>
+              <div class="project-tags">
+                <span class="tag tag-lacquer">Lacquer</span>
+                <span class="tag tag-mentor">Teacher Mentoring</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project-card">
+            <div class="project-image">
+              <!-- Replace with actual image path -->
+              <img src="project2.png" alt="Enfance Partenariat Vietnam" width="358" height="299">
+            </div>
+            <div class="project-content">
+              <h3>Enfance Partenariat Vietnam</h3>
+              <p><em>24 July 2022</em></p>
+              <p>A non-profit organization in Versailles, France. I volunteering and supporting in the introduction of Vietnamese Traditional Lacquer Art to Enfance members</p>
+              <div class="project-tags">
+                <span class="tag tag-charity">Charity Work</span>
+                <span class="tag tag-community">Community Service</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="project-card">
+            <div class="project-image">
+              <!-- Replace with actual image path -->
+              <img src="project3.png" alt="Vietnam National Fine Arts Museum" width="358" height="299">
+            </div>
+            <div class="project-content">
+              <h3>Designer and Emcee at Vietnam National Fine Arts Museum</h3>
+              <p><em>May 2025</em></p>
+              <p>Directed, design and emcee for art exhibition "Nhung Nguoi Ban".</p>
+              <div class="project-tags">
+                <span class="tag tag-speaking">Public Speaking</span>
+                <span class="tag tag-managing">Art Managing</span>
+                <span class="tag tag-designing">Designing</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- Scroll Up Indicator -->
+      <button class="scroll-indicator scroll-up" onclick="scrollToSection('skills')" aria-label="Scroll to Skills section">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
     </section>
 
     <!-- Skills & Expertise Section -->
     <section id="skills">
-        <div class="container">
-            <div class="section-header">
-                <h2>Skill & Expertise</h2>
-                <p>A diverse skill set spanning design, development, and deployment</p>
-            </div>
-
-            <!-- Software Skills Grid -->
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <!-- Replace with actual image path -->
-                    <img src="indesign.png" alt="Adobe InDesign" width="354" height="264">
-                </div>
-                <div class="skill-card">
-                    <!-- Replace with actual image path -->
-                    <img src="figma.png" alt="Figma" width="354" height="264">
-                </div>
-                <div class="skill-card">
-                    <!-- Replace with actual image path -->
-                    <img src="illustrator.png" alt="Adobe Illustrator" width="354" height="264">
-                </div>
-                <div class="skill-card">
-                    <!-- Replace with actual image path -->
-                    <img src="photoshop.png" alt="Adobe Photoshop" width="354" height="264">
-                </div>
-                <div class="skill-card">
-                    <!-- Replace with actual image path -->
-                    <img src="premiere.png" alt="Adobe Premiere Pro" width="354" height="264">
-                </div>
-                <div class="skill-card">
-                    <!-- Replace with actual image path -->
-                    <img src="aftereffects.png" alt="Adobe After Effects" width="354" height="264">
-                </div>
-            </div>
-
-            <!-- Skills Timeline Table -->
-            <div class="table-container">
-                <h3 style="text-align: center; margin-bottom: 2rem;">Skills Development Timeline</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th><strong>Year</strong></th>
-                            <th><strong>Skill Acquired</strong></th>
-                            <th><strong>Proficiency Level</strong></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>2020</td>
-                            <td><em>Traditional Lacquer Art</em></td>
-                            <td>Advanced</td>
-                        </tr>
-                        <tr>
-                            <td>2021</td>
-                            <td><em>Adobe Creative Suite</em></td>
-                            <td>Intermediate</td>
-                        </tr>
-                        <tr>
-                            <td>2022</td>
-                            <td><em>UI/UX Design</em></td>
-                            <td>Advanced</td>
-                        </tr>
-                        <tr>
-                            <td>2023</td>
-                            <td><em>Art Management</em></td>
-                            <td>Intermediate</td>
-                        </tr>
-                        <tr>
-                            <td>2024</td>
-                            <td><em>Public Speaking</em></td>
-                            <td>Advanced</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+      <div class="container">
+        <div class="section-header">
+          <h2>Skill & Expertise</h2>
+          <p>A diverse skill set spanning design, development, and deployment</p>
         </div>
 
-        <!-- Scroll Up Indicator -->
-        <button class="scroll-indicator scroll-up" onclick="scrollToSection('contact')" aria-label="Scroll to Contact section">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-        </button>
+        <!-- Software Skills Grid -->
+        <div class="skills-grid">
+          <div class="skill-card">
+            <!-- Replace with actual image path -->
+            <img src="indesign.png" alt="Adobe InDesign" width="354" height="264">
+          </div>
+          <div class="skill-card">
+            <!-- Replace with actual image path -->
+            <img src="figma.png" alt="Figma" width="354" height="264">
+          </div>
+          <div class="skill-card">
+            <!-- Replace with actual image path -->
+            <img src="illustrator.png" alt="Adobe Illustrator" width="354" height="264">
+          </div>
+          <div class="skill-card">
+            <!-- Replace with actual image path -->
+            <img src="photoshop.png" alt="Adobe Photoshop" width="354" height="264">
+          </div>
+          <div class="skill-card">
+            <!-- Replace with actual image path -->
+            <img src="premiere.png" alt="Adobe Premiere Pro" width="354" height="264">
+          </div>
+          <div class="skill-card">
+            <!-- Replace with actual image path -->
+            <img src="aftereffects.png" alt="Adobe After Effects" width="354" height="264">
+          </div>
+        </div>
+
+        <!-- Skills Timeline Table -->
+        <div class="table-container">
+          <h3 style="text-align: center; margin-bottom: 2rem;">Skills Development Timeline</h3>
+          <table>
+            <thead>
+              <tr>
+                <th><strong>Year</strong></th>
+                <th><strong>Skill Acquired</strong></th>
+                <th><strong>Proficiency Level</strong></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>2020</td>
+                <td><em>Traditional Lacquer Art</em></td>
+                <td>Advanced</td>
+              </tr>
+              <tr>
+                <td>2021</td>
+                <td><em>Adobe Creative Suite</em></td>
+                <td>Intermediate</td>
+              </tr>
+              <tr>
+                <td>2022</td>
+                <td><em>UI/UX Design</em></td>
+                <td>Advanced</td>
+              </tr>
+              <tr>
+                <td>2023</td>
+                <td><em>Art Management</em></td>
+                <td>Intermediate</td>
+              </tr>
+              <tr>
+                <td>2024</td>
+                <td><em>Public Speaking</em></td>
+                <td>Advanced</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Scroll Up Indicator -->
+      <button class="scroll-indicator scroll-up" onclick="scrollToSection('contact')" aria-label="Scroll to Contact section">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
     </section>
 
     <!-- Get In Touch Section -->
     <section id="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2>Get In Touch</h2>
-                <p>Have a project in mind or want to collaborate? I'd love to hear from you.</p>
-            </div>
-
-            <div class="contact-grid">
-                <!-- Contact Info -->
-                <div class="contact-info">
-                    <div>
-                        <h3>Let's Work Together</h3>
-                        <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
-                    </div>
-
-                    <div class="contact-item">
-                        <svg class="contact-icon" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/>
-                        </svg>
-                        <div>
-                            <p><strong>Email</strong></p>
-                            <a href="mailto:tranhanhminh123@gmail.com">tranhanhminh123@gmail.com</a>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <svg class="contact-icon" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M20 22.621l-3.521-6.795c-.008.004-1.974.97-2.064 1.011-2.24 1.086-6.799-7.82-4.609-8.994l2.083-1.026-3.493-6.817-2.106 1.039c-7.202 3.755 4.233 25.982 11.6 22.615.121-.055 2.102-1.029 2.11-1.033z"/>
-                        </svg>
-                        <div>
-                            <p><strong>Phone</strong></p>
-                            <a href="tel:+14374244578">+ (437) - 424 - 4578</a>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <svg class="contact-icon" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/>
-                        </svg>
-                        <div>
-                            <p><strong>Location</strong></p>
-                            <p>200 University ave, Waterloo, ON</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Contact Form -->
-                <div class="contact-form">
-                    <form id="contactForm" onsubmit="handleSubmit(event)">
-                        <div class="form-group">
-                            <label for="name"><strong>NAME</strong></label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email"><strong>EMAIL</strong></label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message"><strong>MESSAGE</strong></label>
-                            <textarea id="message" name="message" rows="6" required></textarea>
-                        </div>
-
-                        <button type="submit" class="submit-button">
-                            <strong>SEND MESSAGE</strong>
-                        </button>
-                    </form>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-header">
+          <h2>Get In Touch</h2>
+          <p>Have a project in mind or want to collaborate? I'd love to hear from you.</p>
         </div>
+
+        <div class="contact-grid">
+          <!-- Contact Info -->
+          <div class="contact-info">
+            <div>
+              <h3>Let's Work Together</h3>
+              <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
+            </div>
+
+            <div class="contact-item">
+              <svg class="contact-icon" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z" />
+              </svg>
+              <div>
+                <p><strong>Email</strong></p>
+                <a href="mailto:tranhanhminh123@gmail.com">tranhanhminh123@gmail.com</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <svg class="contact-icon" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20 22.621l-3.521-6.795c-.008.004-1.974.97-2.064 1.011-2.24 1.086-6.799-7.82-4.609-8.994l2.083-1.026-3.493-6.817-2.106 1.039c-7.202 3.755 4.233 25.982 11.6 22.615.121-.055 2.102-1.029 2.11-1.033z" />
+              </svg>
+              <div>
+                <p><strong>Phone</strong></p>
+                <a href="tel:+14374244578">+ (437) - 424 - 4578</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <svg class="contact-icon" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z" />
+              </svg>
+              <div>
+                <p><strong>Location</strong></p>
+                <p>200 University ave, Waterloo, ON</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="contact-form">
+            <form id="contactForm" onsubmit="handleSubmit(event)">
+              <div class="form-group">
+                <label for="name"><strong>NAME</strong></label>
+                <input type="text" id="name" name="name" required>
+              </div>
+
+              <div class="form-group">
+                <label for="email"><strong>EMAIL</strong></label>
+                <input type="email" id="email" name="email" required>
+              </div>
+
+              <div class="form-group">
+                <label for="message"><strong>MESSAGE</strong></label>
+                <textarea id="message" name="message" rows="6" required></textarea>
+              </div>
+
+              <button type="submit" class="submit-button">
+                <strong>SEND MESSAGE</strong>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <!-- About Column -->
-                <div>
-                    <h3><strong>HANH MINH TRAN</strong></h3>
-                    <p>An Artist and Illustrator creating meaningful artwork.</p>
-                </div>
+      <div class="container">
+        <div class="footer-grid">
+          <!-- About Column -->
+          <div>
+            <h3><strong>HANH MINH TRAN</strong></h3>
+            <p>An Artist and Illustrator creating meaningful artwork.</p>
+          </div>
 
-                <!-- Quick Links Column -->
-                <div>
-                    <h3><strong>Quick Link</strong></h3>
-                    <ul class="footer-links">
-                        <li><button onclick="scrollToSection('about')">About</button></li>
-                        <li><button onclick="scrollToSection('projects')">Projects</button></li>
-                        <li><button onclick="scrollToSection('skills')">Skills</button></li>
-                        <li><button onclick="scrollToSection('contact')">Contact</button></li>
-                    </ul>
-                </div>
+          <!-- Quick Links Column -->
+          <div>
+            <h3><strong>Quick Link</strong></h3>
+            <ul class="footer-links">
+              <li><button onclick="scrollToSection('about')">About</button></li>
+              <li><button onclick="scrollToSection('projects')">Projects</button></li>
+              <li><button onclick="scrollToSection('skills')">Skills</button></li>
+              <li><button onclick="scrollToSection('contact')">Contact</button></li>
+            </ul>
+          </div>
 
-                <!-- Connect Column -->
-                <div>
-                    <h3><strong>Connect</strong></h3>
-                    <div class="footer-social">
-                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                            <svg width="40" height="40" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
-                        </a>
-                        <a href="https://linkedin.com/in/hanh-minh-tran-111675218" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                            <svg width="40" height="40" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                            </svg>
-                        </a>
-                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                            <svg width="40" height="40" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
+          <!-- Connect Column -->
+          <div>
+            <h3><strong>Connect</strong></h3>
+            <div class="footer-social">
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <svg width="40" height="40" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                </svg>
+              </a>
+              <a href="https://linkedin.com/in/hanh-minh-tran-111675218" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <svg width="40" height="40" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                </svg>
+              </a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <svg width="40" height="40" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                </svg>
+              </a>
             </div>
-
-            <!-- Copyright -->
-            <div class="footer-copyright">
-                <p>© 2025 <strong>Hanh Minh Tran</strong>. All rights reserved.</p>
-            </div>
+          </div>
         </div>
+
+        <!-- Copyright -->
+        <div class="footer-copyright">
+          <p>© 2025 <strong>Hanh Minh Tran</strong>. All rights reserved.</p>
+        </div>
+      </div>
     </footer>
 
     <!-- JavaScript -->
     <script>
-        // Smooth scroll to section
-        function scrollToSection(sectionId) {
-            const element = document.getElementById(sectionId);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-            }
+      // Smooth scroll to section
+      function scrollToSection(sectionId) {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({
+            behavior: 'smooth'
+          });
         }
+      }
 
-        // Form submission handler
-        function handleSubmit(event) {
-            event.preventDefault();
-            alert('Thank you for your message! I\'ll get back to you soon.');
-            document.getElementById('contactForm').reset();
-        }
+      // Form submission handler
+      function handleSubmit(event) {
+        event.preventDefault();
+        alert('Thank you for your message! I\'ll get back to you soon.');
+        document.getElementById('contactForm').reset();
+      }
 
-        // Add active state to navigation on scroll
-        window.addEventListener('scroll', function() {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.nav-menu a');
-            
-            let current = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= (sectionTop - 200)) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
-            });
+      // Add active state to navigation on scroll
+      window.addEventListener('scroll', function() {
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-menu a');
+
+        let current = '';
+
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          if (pageYOffset >= (sectionTop - 200)) {
+            current = section.getAttribute('id');
+          }
         });
+
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
     </script>
-</body>
+  </body>
 </html>
